@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Biometric Record-->
+        <record id="view_biometric_record_form" model="ir.ui.view">
+            <field name="name">biometric.record.form_.view</field>
+            <field name="model">biometric.record</field>
+            <field name="arch" type="xml">
+                <form string="Biometric Record">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="success,failed"
+                               statusbar_colors="{'failed':'red','success':'green'}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <field name="note"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_biometric_record_tree" model="ir.ui.view">
+            <field name="name">biometric.record.tree.view</field>
+            <field name="model">biometric.record</field>
+            <field name="arch" type="xml">
+                <tree string="Biometric Record">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_biometric_record_view" model="ir.actions.act_window">
+            <field name="name">Biometric Records</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">biometric.record</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create New Biometric Record
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

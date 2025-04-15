@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="biometric_res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="70"/>
+            <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//app/block[@name='kiosk_mode_setting_container']" position="after">
+                    <block title="Biometric Attendance" id="biometric_setting_container"
+                           name="biometric_setting_container">
+                        <setting string="Get Biometric Logs"
+                                 help="Choose a Way to Get Biometric Logs. Default is (Automatic).">
+                            <field name="run_type" required="1" class="w-75"/>
+                        </setting>
+                        <setting invisible="run_type == 'manual'" string=" "
+                                 help=" Choose The Interval to Get Biometric Logs On It.">
+                            <field name="interval_number" class="o_light_label"/>
+                            <field name="interval_type" class="o_light_label"/>
+                            <field name="nextcall" class="o_light_label"/>
+                        </setting>
+                    </block>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

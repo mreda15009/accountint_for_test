@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Biometric Machine -->
+        <record id="view_biometric_machine_form" model="ir.ui.view">
+            <field name="name">view.biometric.machine.form</field>
+            <field name="model">biometric.machine</field>
+            <field name="arch" type="xml">
+                <form string="Biometric Machine">
+                    <header>
+                        <button name="download_log"
+                                type="object"
+                                string="Download Log"
+                                invisible="state != 'active'"
+                                class="btn-primary"/>
+                        <button name="action_download_from_log"
+                                string="Download from log"
+                                invisible="state != 'active'"
+                                class="btn btn-primary"
+                                type="object"
+                                groups="hr_attendance.group_hr_attendance_manager"/>
+
+                        <button string="Activate Machine" invisible="state != 'inactive'" class="btn btn-primary"
+                                type="object" name="action_activate_machine"/>
+                        <field name="state" widget="statusbar" clickable="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_attendance_log" type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-edit"
+                                    invisible="not att_log_cnt">
+                                <field name="att_log_cnt" widget="statinfo" string="Logs"/>
+                            </button>
+                        </div>
+
+                        <div class="oe_left">
+                            <h1>
+                                <field name="name" required="1" placeholder="Machine Name"/>
+                            </h1>
+                        </div>
+                        <br/>
+                        <group col="4" colspan="4">
+                            <field name="ip_address" required="1"/>
+                            <field name="port" required="1"/>
+                            <field name="timezone" required="1" readonly="1"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <label for="interval_min"/>
+                            <div>
+                                <field name="time_interval_min" class="oe_inline" required="True"/>
+                                <field name="interval_min" class="oe_inline" required="True"/>
+                            </div>
+                            <label for="interval_max"/>
+                            <div>
+                                <field name="time_interval_max" class="oe_inline" required="True"/>
+                                <field name="interval_max" class="oe_inline" required="True"/>
+                            </div>
+                        </group>
+                        <group string="Download Logs">
+                            <field name="log_ids" nolabel="1" readonly="1" colspan="2"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_biometric_machine_tree" model="ir.ui.view">
+            <field name="name">biometric.machine.tree</field>
+            <field name="model">biometric.machine</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Biometric Machine">
+                    <field name="name"/>
+                    <field name="ip_address"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_biometric_machine_view" model="ir.actions.act_window">
+            <field name="name">Biometric Machines</field>
+            <field name="res_model">biometric.machine</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create New Biometric Machine
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

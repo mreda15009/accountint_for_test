@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Biometric Attendances Menu -->
+        <menuitem id="menu_biometric_attendance" name="Biometric Attendances"
+                  parent="hr_attendance.menu_hr_attendance_root"
+                  sequence="60" groups="hr_attendance.group_hr_attendance_manager"/>
+        <!-- Biometric Machines Menu -->
+        <menuitem id="menu_action_biometric_machine" name="Biometric Machines"
+                  parent="menu_biometric_attendance"
+                  sequence="10"
+                  groups="hr_attendance.group_hr_attendance_manager"
+                  action="bio_attendance.action_biometric_machine_view"/>
+        <!-- Biometric Records Menu -->
+        <menuitem id="biometric_record_menu" name="Biometric Records"
+                  parent="menu_biometric_attendance"
+                  sequence="30" groups="base.group_system"
+                  action="bio_attendance.action_biometric_record_view"/>
+        <!-- Biometric Logs Menu -->
+        <menuitem id="biometric_log_menu" name="Biometric Logs"
+                  parent="menu_biometric_attendance"
+                  sequence="50"
+                  action="bio_attendance.action_biometric_log_view"/>
+
+    </data>
+</odoo>
