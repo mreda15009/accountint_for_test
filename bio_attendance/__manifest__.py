@@ -1,6 +1,6 @@
 {
     'name': "bio_attendance",
-    'summary': """Biometric Attendance Download 111111111111""",
+    'summary': """Biometric Attendance Download 222222222222""",
     'description': """Biometric Attendance Download""",
 
     'author': 'ResalaSoft',
